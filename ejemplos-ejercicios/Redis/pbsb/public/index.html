@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>PubSub</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/jquery-1.4.3.min.js"></script>
+    <!-- <script src="/javascripts/socket.js"></script> -->
+</head>
+<body>
+    <h1>Mensajes</h1>
+    <div id="content"></div>
+    <script>    
+        $(document).ready(function() {
+            var socket = io.connect("http://localhost:3000/");
+            var content = $('#content');
+
+            socket.on('connect', function() {
+            });
+
+            socket.on('message', function(message){
+                content.prepend(message + '<br />');
+            }) ;
+
+            socket.on('disconnect', function() {
+                console.log('disconnected');
+                content.html("<b>Disconnected!</b>");
+            });
+
+        });
+    </script>
+</body>
+</html>

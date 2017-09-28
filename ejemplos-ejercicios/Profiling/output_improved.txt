@@ -1,0 +1,41 @@
+Statistical profiling result from isolate-000001B7FC625600-v8.log, (12140 ticks, 6 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+  11901   98.0%          C:\WINDOWS\SYSTEM32\ntdll.dll
+    204    1.7%          C:\Program Files\nodejs\node.exe
+     15    0.1%          C:\WINDOWS\System32\KERNEL32.DLL
+      7    0.1%          C:\Program Files\Bitdefender Antivirus Free\atcuf\262824383465032704\atcuf64.dll
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      1    0.0%    7.7%  Stub: ToBooleanICStub
+      1    0.0%    7.7%  Stub: CreateWeakCellStub
+      1    0.0%    7.7%  Stub: BinaryOpWithAllocationSiteStub
+      1    0.0%    7.7%  LazyCompile: ~deprecated internal/util.js:62:22
+      1    0.0%    7.7%  LazyCompile: ~[Symbol.match] native regexp.js:430:29
+      1    0.0%    7.7%  LazyCompile: ~DoJoin native array.js:129:16
+      1    0.0%    7.7%  Handler: An IC handler from the snapshot
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+      7    0.1%   53.8%  JavaScript
+      0    0.0%    0.0%  C++
+      4    0.0%   30.8%  GC
+  12127   99.9%          Shared libraries
+      6    0.0%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 2.0% are not shown.
+
+   ticks parent  name
+  11901   98.0%  C:\WINDOWS\SYSTEM32\ntdll.dll
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="/socket.io/socket.io.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<form action="">
+		<h2>Usuario:</h2>
+		<input type="text" id="user">
+
+		<h2>Canal:</h2>
+		<select name="" id="canales">
+			<option value="animales">Animales</option>
+			<option value="comida">Comida</option>
+		</select>
+
+		<h2>Envia mensaje:</h2>
+		<input type="text" id="msgtxt">
+		<button id="sendmsg">Envia Msg</button>
+	</form>
+
+	<h2>Mensajes recientes:</h2>
+	<ul id="lastmsgs">
+	</ul>
+</body>
+<script>
+	connectChannel('animales');
+
+	document.getElementById('canales').onchange = (function () {
+		console.log('New channel:',this.value);
+		socket.disconnect();
+		connectChannel(this.value);
+	});
+
+	function connectChannel (channel) {
+		socket = io.connect("http://localhost:3000/"+channel);
+		socket.on('msg',function (data) {
+			addMessList (data);
+		});
+	}
+
+	document.getElementById('sendmsg').onclick = (function () {
+		console.log("Sending msg...");
+		var msgtxt = document.getElementById('msgtxt').value;
+		var user = document.getElementById('user').value;
+		var data = {user:user, txt:msgtxt};
+		addMessList (data,true);
+		if(msgtxt)socket.emit("msg",data);
+		return false;
+	});
+
+	function addMessList (data, disabled) {
+		if(!disabled) disabled=false;
+		document.getElementById('lastmsgs').innerHTML += '<li class="'+(disabled?'disabled':'')+'">'+data.user+':'+data.txt+'</li>';
+	}
+</script>
+</html>

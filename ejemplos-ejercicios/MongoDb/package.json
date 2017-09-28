@@ -1,0 +1,17 @@
+{
+  "name": "MongoDb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node client1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "mongodb": "^2.2.31"
+  }
+}
